@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>밀리의 서재 사전 과제</title>
+  </head>
+  <body>
+    <h1>밀리의 서재 사전 과제</h1>
+    <button class="clear-button" id="clear-local-storage">로컬 스토리지 초기화</button>
+    <div class="container">
+      <div class="left-panel">
+      <section class="todo-create">
+        <h2>할 일 만들기</h2>
+        <div class="form">
+          <input id="create-content-input" type="text" placeholder="할 일 내용 입력" />
+          <input id="create-time-input" type="number" placeholder="초 단위 시간 입력" />
+          <button id="create-todo-button">추가</button>
+        </div>
+      </section>
+
+      <section class="todo-list">
+        <h2>할 일 목록</h2>
+        <div class="controls">
+          <button type="button" id="sort-by-input-time">입력한 순</button>
+          <button type="button" id="sort-by-remain-time">남은 시간 순</button>
+          <button type="button" id="done-all">전체 종료</button>
+          <button type="button" id="done-selected">선택 종료</button>
+        </div>
+        <div class="task-list"></div>
+      </section>
+      </div>
+      <section class="done-list">
+        <h2>종료된 할 일</h2>
+        <div class="controls">
+          <button type="button" id="restore-all">전체 복원</button>
+          <button type="button" id="restore-selected">선택 복원</button>
+        </div>
+        <div class="task-list"></div>
+      </section>
+      <div class="modal-wrap modal-modify">
+        <div class="modal">
+          <h3>할 일 수정</h3>
+          <input type="hidden" id="modify-id-input" />
+          <span>내용</span>
+          <input type="text" id="modify-content-input" />
+          <span>시간</span>
+          <input type="number" id="modify-time-input" />
+          <div class="modal-buttons">
+            <button class="cancel">취소</button>
+            <button class="confirm">저장</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-wrap modal-done">
+        <div class="modal">
+          <div class="modal-content"></div>
+          <div class="modal-buttons">
+            <button class="confirm">확인</button>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

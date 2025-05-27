@@ -51,8 +51,6 @@ const state = {
 // 유틸리티 함수
 const utils = {
   validateInput: (content, time) => {
-    console.log('validateInput content:', content);
-    console.log('validateInput time:', time);
     if (!content?.trim()?.length) {
       alert('할 일을 입력해주세요.');
       return false;
@@ -96,9 +94,6 @@ const todoManager = {
   createTodo: () => {
     const content = document.querySelector(SELECTORS.CONTENT_INPUT).value;
     const time = document.querySelector(SELECTORS.TIME_INPUT).value;
-
-    console.log('createTodo content:', content);
-    console.log('createTodo time:', time);
 
     if (!utils.validateInput(content, time)) return;
 

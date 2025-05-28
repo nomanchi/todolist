@@ -1,8 +1,9 @@
 # 할 일 관리 애플리케이션
 
-scripts
-DEV: npm run dev
-PRD: npm run build
+npm scripts
+
+- DEV: npm run dev
+- PRD: npm run build
 
 ## 구현된 요구사항
 

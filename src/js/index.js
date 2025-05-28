@@ -35,6 +35,8 @@ const SELECTORS = {
   MODAL_DONE: '.modal-done',
   MODAL_DONE_CONTENT: '.modal-done .modal-content',
   MODAL_DONE_BUTTON: '.modal-done .modal-buttons .confirm',
+  CONTROLS_ACTIVE: '.controls .active',
+  TIME: '.time',
 };
 
 // 상태 관리
@@ -111,7 +113,7 @@ const todoManager = {
   },
 
   sortTodoList: (sortType) => {
-    document.querySelector('.controls .active')?.classList.remove('active');
+    document.querySelector(SELECTORS.CONTROLS_ACTIVE)?.classList.remove('active');
     document.getElementById(sortType).classList.add('active');
 
     switch (sortType) {
@@ -168,26 +170,23 @@ const todoManager = {
     const todoListElement = document.querySelector(SELECTORS.TODO_LIST);
     const _doneList = [];
     let content = '';
-    let isShowModal = false;
 
     state.todoList.forEach((todo) => {
       todo.remainTime--;
 
       const taskElement = todoListElement.querySelector(`#todo-${todo.id}`);
-      taskElement.querySelector('.time').textContent = `${todo.remainTime}초`;
+      taskElement.querySelector(SELECTORS.TIME).textContent = `${todo.remainTime}초`;
       if (todo.remainTime < IMMINENT_TIME) {
         taskElement.classList.add('imminent');
 
         if (todo.remainTime <= 0) {
-          isShowModal = true;
           _doneList.push(todo);
-          content += `<p>[${todo.content}] 아이템이 종료 되었습니다.</p>`;
-          _doneList.forEach((done) => {});
         }
       }
     });
 
     if (_doneList.length) {
+      content += `<p>[${_doneList.map((done) => done.content).join(', ')}] 아이템이 종료 되었습니다.</p>`;
       todoManager.done(_doneList);
       document.querySelector(SELECTORS.MODAL_DONE_CONTENT).innerHTML = content;
       utils.showModal(SELECTORS.MODAL_DONE);

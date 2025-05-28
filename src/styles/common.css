@@ -1,6 +1,8 @@
 body {
   font-family: 'Arial', sans-serif;
   padding: 20px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .clear-button {
@@ -12,6 +14,9 @@ body {
   display: flex;
   gap: 20px;
   align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* 왼쪽 전체 래퍼 */
@@ -20,6 +25,8 @@ body {
   flex-direction: column;
   gap: 20px;
   flex: 1;
+  min-width: 300px;
+  max-width: 600px;
 }
 
 /* 공통 섹션 스타일 */
@@ -39,7 +46,8 @@ section {
 }
 
 .done-list {
-  width: 600px;
+  width: 100%;
+  max-width: 400px;
 }
 
 /* 할 일 생성 영역 */
@@ -47,19 +55,22 @@ section {
   display: flex;
   gap: 10px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .todo-create input {
   padding: 5px;
   flex: 1;
+  min-width: 200px;
 }
 
 .todo-create button {
   padding: 5px 15px;
+  white-space: nowrap;
 }
 
 /* 정렬 버튼들 */
-.todo-list .controls {
+.controls {
   display: flex;
   gap: 10px;
   margin: 10px 0;
@@ -159,4 +170,56 @@ section {
   background-color: #007bff;
   color: white;
   border: none;
+}
+
+/* 모바일 환경을 위한 반응형 스타일 */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .left-panel {
+    width: 100%;
+    max-width: none;
+  }
+
+  .done-list {
+    width: 100%;
+    max-width: none;
+  }
+
+  .todo-create .form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .todo-create input {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .todo-create button {
+    width: 100%;
+  }
+
+  .todo-list .controls {
+    flex-direction: column;
+  }
+
+  .controls button {
+    width: 100%;
+    padding: 5px 10px;
+  }
+
+  .modal {
+    width: 90%;
+    max-width: 300px;
+    margin: 0 10px;
+  }
 }
